@@ -5,8 +5,8 @@
     "type": "object",
     "properties": {
       "name": { "type": "string" },
-      "damage": { "type": "number" },
-      "count": { "type": "number" }
+      "damage": { "type": "number", "multipleOf": 1 },
+      "count": { "type": "number", "multipleOf": 1 }
     },
     "required": [ "name", "damage", "count" ],
     "additionalProperties": false
