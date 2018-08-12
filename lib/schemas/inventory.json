@@ -1,0 +1,14 @@
+{
+  "id": "/Inventory",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "damage": { "type": "number" },
+      "count": { "type": "number" }
+    },
+    "required": [ "name", "damage", "count" ],
+    "additionalProperties": false
+  }
+}

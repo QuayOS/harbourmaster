@@ -1,0 +1,12 @@
+{
+  "id": "/Direction",
+  "type": "string",
+  "enum": [
+    "up",
+    "down",
+    "north",
+    "east",
+    "south",
+    "west"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "id": "/Whitelist",
+  "type": "array",
+  "items": { "type": "string" }
+}

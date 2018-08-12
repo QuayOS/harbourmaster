@@ -1,0 +1,32 @@
+{
+  "name": "turtle-command-dispatcher",
+  "version": "0.0.0",
+  "description": "REST server acting as a dispatcher for turtle commands via MQTT",
+  "main": "index.js",
+  "repository": "https://github.com/QuayOS/turtle-command-dispatcher",
+  "author": "Jonas Auer <jonas.auer.94@gmail.com>",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "start": "node index.js",
+    "doc": "rm -rf ./doc && jsdoc -c jsdocrc.json -R README.md -d ./doc -r ./lib/*",
+    "test": "standard"
+  },
+  "dependencies": {
+    "cls-hooked": "^4.2.2",
+    "jsonschema": "^1.2.4",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "mqtt": "^2.18.3",
+    "uuid": "^3.3.2",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.5",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "doc"
+    ]
+  }
+}

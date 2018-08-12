@@ -1,0 +1,10 @@
+{
+  "id": "/Orientation",
+  "type": "string",
+  "enum": [
+    "north",
+    "east",
+    "south",
+    "west"
+  ]
+}
