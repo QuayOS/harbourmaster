@@ -2,7 +2,6 @@
   "id": "/TurtleStatus",
   "type": "object",
   "properties": {
-    "id": { "$ref": "/TurtleId" },
     "fuel": { "type": "number" },
     "position": { "$ref": "/Position" },
     "orientation": { "$ref": "/Orientation" },
@@ -10,7 +9,6 @@
     "inventory": { "$ref": "/Inventory" }
   },
   "required": [
-    "id",
     "fuel",
     "position",
     "orientation",
