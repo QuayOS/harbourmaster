@@ -1,19 +1,31 @@
 {
   "id": "/TurtleStatus",
   "type": "object",
-  "properties": {
-    "fuel": { "type": "number" },
-    "position": { "$ref": "/Position" },
-    "orientation": { "$ref": "/Orientation" },
-    "whitelist": { "$ref": "/Whitelist" },
-    "inventory": { "$ref": "/Inventory" }
-  },
-  "required": [
-    "fuel",
-    "position",
-    "orientation",
-    "whitelist",
-    "inventory"
-  ],
-  "additionalProperties": false
+  "oneOf": [
+    {
+      "properties": {
+        "online": { "type": "boolean", "enum": [ true ] },
+        "fuel": { "type": "number" },
+        "position": { "$ref": "/Position" },
+        "orientation": { "$ref": "/Orientation" },
+        "whitelist": { "$ref": "/Whitelist" },
+        "inventory": { "$ref": "/Inventory" }
+      },
+      "required": [
+        "online",
+        "fuel",
+        "position",
+        "orientation",
+        "whitelist",
+        "inventory"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "online": { "type": "boolean", "enum": [ false ] }
+      },
+      "additionalProperties": false
+    }
+  ]
 }
