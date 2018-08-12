@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: logger</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: logger</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Utility module for creating loggers with a globally equal, customised format.</div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".correlate"><span class="type-signature">(static) </span>correlate<span class="signature">(fn)</span><span class="type-signature"> &rarr; {Any}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Call the given function and add a correlation id to all messages logged
+during the function's execution unique to this correlate() call when using a
+logger created through <a href="module-logger.html#.createLogger">module:logger.createLogger</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to call.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Return value of the given function, if any.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Any</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const logger = require('./logger')
+const log = logger.createLogger(__filename)
+logger.correlate(() => {
+  log.info('Test 1')
+  setTimeout(() => { log.info('Test 2') }, 1000)
+})
+log.info('Test 3')
+// Output (indented for better readability):
+// {
+//   "message": "Test 1",
+//   "level": "info",
+//   "correlationId": "957b17ec-13f5-4e1e-9683-7a6fc8198f1c",
+//   "filename": "test.js",
+//   "timestamp": "2018-08-12T19:27:09.381Z"
+// }
+// {
+//   "message": "Test 3",
+//   "level": "info",
+//   "filename": "test.js",
+//   "timestamp": "2018-08-12T19:27:09.385Z"
+// }
+// ...after 1 second:
+// {
+//   "message": "Test 3",
+//   "level": "info",
+//   "correlationId": "957b17ec-13f5-4e1e-9683-7a6fc8198f1c",
+//   "filename": "test.js",
+//   "timestamp": "2018-08-12T19:27:10.386Z"
+// }</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".createLogger"><span class="type-signature">(static) </span>createLogger<span class="signature">(filename)</span><span class="type-signature"> &rarr; {winston.Logger}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a logger for the given module. Prints JSON messages to the console,
+adding information like the logging module's filename, a timestamp and a
+correlation id if called from within <a href="module-logger.html#.correlate">module:logger.correlate</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filename</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The filename to use then logging messages. Only the
+basename will be logged.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The pre-configured logger.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">winston.Logger</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const log = require('./logger').logger(__filename)
+log.info('Hello, world')
+// Output (indented for better readability):
+// {
+//   "message": "Hello, world",
+//   "level": "info",
+//   "filename": "test.js",
+//   "timestamp":"2018-08-12T17:08:45.339Z"
+// }</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-logger.html">logger</a></li><li><a href="module-mqtt-wrapper.html">mqtt-wrapper</a></li><li><a href="module-schemas_schema-validator.html">schemas/schema-validator</a></li><li><a href="module-turtle.html">turtle</a></li><li><a href="module-turtle-manager.html">turtle-manager</a></li></ul><h3>Externals</h3><ul><li><a href="external-_jsonschema.Validator_.html">jsonschema.Validator</a></li></ul><h3>Classes</h3><ul><li><a href="module-mqtt-wrapper-MQTTWrapper.html">MQTTWrapper</a></li><li><a href="module-turtle-manager-TurtleManager.html">TurtleManager</a></li><li><a href="module-turtle-Turtle.html">Turtle</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
