@@ -2,9 +2,9 @@
   "id": "/Position",
   "type": "object",
   "properties": {
-    "x": { "type": "number" },
-    "y": { "type": "number" },
-    "z": { "type": "number" }
+    "x": { "type": "number", "multipleOf": 1 },
+    "y": { "type": "number", "multipleOf": 1 },
+    "z": { "type": "number", "multipleOf": 1 }
   },
   "required": [ "x", "y", "z" ],
   "additionalProperties": false
