@@ -1,5 +1,5 @@
 'use strict'
 
-const { Server } = require('./lib/server')
-const server = new Server()
-server.run()
+const { Client } = require('./lib/mqtt-client/client')
+const client = new Client()
+client.run()
