@@ -1,9 +1,9 @@
 {
-  "name": "turtle-command-dispatcher",
+  "name": "harbourmaster",
   "version": "0.0.0",
   "description": "REST server acting as a dispatcher for turtle commands via MQTT",
   "main": "index.js",
-  "repository": "https://github.com/QuayOS/turtle-command-dispatcher",
+  "repository": "https://github.com/quayOS/harbourmaster",
   "author": "Jonas Auer <jonas.auer.94@gmail.com>",
   "license": "AGPL-3.0-only",
   "scripts": {
