@@ -23,10 +23,5 @@
   "devDependencies": {
     "jsdoc": "^3.5.5",
     "standard": "^11.0.1"
-  },
-  "standard": {
-    "ignore": [
-      "doc"
-    ]
   }
 }
