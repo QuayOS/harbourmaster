@@ -1,6 +1,6 @@
 {
   "name": "harbourmaster",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "REST server acting as a dispatcher for turtle commands via MQTT",
   "main": "index.js",
   "repository": "https://github.com/quayOS/harbourmaster",
