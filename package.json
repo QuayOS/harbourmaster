@@ -12,6 +12,7 @@
     "test": "standard"
   },
   "dependencies": {
+    "bowline": "https://github.com/quayOS/bowline.git#1.0.3",
     "cls-hooked": "^4.2.2",
     "jsonschema": "^1.2.4",
     "koa": "^2.5.2",
