@@ -2,13 +2,22 @@
   "id": "/Inventory",
   "type": "array",
   "items": {
-    "type": "object",
-    "properties": {
-      "name": { "type": "string" },
-      "damage": { "type": "number", "multipleOf": 1 },
-      "count": { "type": "number", "multipleOf": 1 }
-    },
-    "required": [ "name", "damage", "count" ],
-    "additionalProperties": false
-  }
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "damage": { "type": "number", "multipleOf": 1 },
+          "count": { "type": "number", "multipleOf": 1 }
+        },
+        "required": [ "name", "damage", "count" ],
+        "additionalProperties": false
+      },
+      {
+        "type": "null"
+      }
+    ]
+  },
+  "minItems": 16,
+  "maxItems": 16
 }
