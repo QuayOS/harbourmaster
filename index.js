@@ -1,6 +1,6 @@
 'use strict'
 
-const log = require('./lib/util/logger').createLogger(__filename)
+const log = require('logbook').createLogger(__filename)
 
 const { Server } = require('./lib/server/server')
 const { TurtleManager } = require('./lib/models/turtle-manager')
